@@ -1,0 +1,91 @@
+<html> // untuk mendefinisikan seluruh dokumen HTML.
+<head> // berisi informasi meta tentang dokumen, seperti judul, link ke file CSS, dan lannya.
+    <title>Aplikasi Kalkulator Sederhana</title> // untuk mendapatkan judul halaman web yang akan ditampilkan pada tab browser.
+    <style> // mendefinisikan CSS dalam dokumen HTML
+        body{ // bagian utama dalam dari halamn web 
+            background-color: rgb(9, 195, 251); // untuk menambah warna background
+            font-family: monospace; // untuk menentukan jenis font yang digunakan untuk teks di dalam elemen HTML
+        }
+        table{ // untuk mendefinisikan seluruh tabel
+            width: 320px; // untuk menentukan lebar dan tinggi gambar
+            margin: 40px auto; // untuk memberikan ruang disekitar elemen 
+            background-color: white; // untuk menambakan warna background 
+            border-color: white; // untuk menentukan warna dari batas(border) elemen HTML
+        }
+        td{
+            width: 25%; // untuk menentukan lebar dan tinggi gambar 
+            border-color: white; // untuk menentukan warna dari batas(border) elemen HTML
+        }
+        button{ // untuk membuat tombol interaktif yang dapat di klik oleh pengguna untuk memicu aksi tertentu
+            height: 70px; // untuk mengatur tinggi suatu elemen 
+            font-size: 30px; // untuk mengatur ukuran teks pada elemen HTML
+            border: none; // untuk menghapus atau menghilangkan border (garis pembatas) dari suatu elemen
+            text-align: center; // untuk mengatur peralatan teks dalam suatu elemen blok 
+            width: 100%; // untuk menentukan lebar dan tinggi gambar
+        }
+        #inputLabel{ // untuk membuat elemen formulir interaktif, seperti formulir pengisian data
+            height: 100px; // untuk mengatur tinggi suatu elemen 
+            font-size: 60px; // untuk mengatur ukuran teks pada elemen HTML
+            background-color: #dedbdb; // untuk mengatur warna latar belakang elemen 
+            vertical-align: bottom; // untuk mengatur peralatan elamen secara vertikal
+            text-align: right;  // untuk mengatur peralatan teks dalam suatu elemen blok
+        }
+    </style>
+</head>
+<body>
+    <table border=""cellspacing="0"> // untuk menambahkan garis pembatas pada tabel
+        <tr>  // untuk mendefinisikan garis tabel 
+            <td colspan="4"id="inputLabel">0</td> // untuk mengatur jumlah kolom yang digabungkan
+        </tr> // untuk tag penutup elemen 
+        <tr>
+            <td colspan="2"><button onclick="tombol(this)">AC</button></td> // untuk menetukan aksi atau fungsi javascript saat tombol tersebut di klik
+            <td><button onclick="tombol(this)">Del</button></td> // untuk menentukan aksi atau perintah yang akan di jalankan ketika tombol (button) tersebut diklik oleh pengguna
+            <td><button onclick="tombol(this)">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="tombol(this)">7</button></td>
+            <td><button onclick="tombol(this)">8</button></td>
+            <td><button onclick="tombol(this)">9</button></td>
+            <td><button onclick="tombol(this)">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="tombol(this)">4</button></td>
+            <td><button onclick="tombol(this)">5</button></td>
+            <td><button onclick="tombol(this)">6</button></td>
+            <td><button onclick="tombol(this)">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="tombol(this)">1</button></td>
+            <td><button onclick="tombol(this)">2</button></td>
+            <td><button onclick="tombol(this)">3</button></td>
+            <td><button onclick="tombol(this)">+</button></td>
+        
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="tombol(this)">0</button></td>
+            <td><button onclick="tombol(this)">.</button></td>
+            <td><button onclick="tombol(this)">=</button></td> 
+        </tr>
+        </table> // untuk membuat struktur tabel yang digunakan untuk menampilkan data dalam bentuk baris dan kolom
+        <script> // untuk menyisipkan atau merujuk kode javascript pada halam web
+            var inputLabel = document.getElementById('inputLabel'); // untuk menyimpan nilai atau refensi kesuatu elemen kehalaman web
+
+            function tombol(obj){ // untuk mengidenfikasi kan aksi atau perintah yang akan di ajalankan ketika tombol tersebut diklik 
+                var kondisi = obj.innerHTML; // untuk mendeklarasikan sebuah variabel yang biasanya digunakan untuk menyimpan suatu nilai yang mencerminkan sebuah kondisi tertentu
+                if(kondisi=="="){ // untuk menjalankan sebuah blok kode berdasarkan evaluasi dari suatu kondisi
+                    inputLabel.innerHTML = eval(inputLabel.innerHTML); // untuk mengeksekusi kode javascript yang diberikan dalam bentuk string
+                }else if(kondisi=="AC"){ // untuk mengevaluasi beberapa kondisi secara berurutan setelah kondisi if pertama
+                    inputLabel.innerHTML="0"; // untuk mengakses atau mengubah konten HTML
+                }else if(kondisi=="Del"){ 
+                    inputLabel.innerHTML=inputLabel.innerHTML.slice(0,-1)||'0';  // untuk mengakses atau mengubah konten HTML
+                }else{
+                    if(inputLabel.innerHTML=="0"){
+                        inputLabel.innerHTML = kondisi;
+                    }else{
+                        inputLabel.innerHTML+= kondisi;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
